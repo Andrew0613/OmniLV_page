@@ -4,27 +4,27 @@
   <meta charset="utf-8">
   <!-- Meta tags for social media banners, these should be filled in appropriatly as they are your "business card" -->
   <!-- Replace the content tag with appropriate information -->
-  <meta name="description" content="DESCRIPTION META TAG">
-  <meta property="og:title" content="SOCIAL MEDIA TITLE TAG"/>
-  <meta property="og:description" content="SOCIAL MEDIA DESCRIPTION TAG TAG"/>
-  <meta property="og:url" content="URL OF THE WEBSITE"/>
+  <meta name="description" content="OmniLV: A unified multimodal framework for low-level vision that handles over 100 sub-tasks including image restoration, enhancement, weak-semantic dense prediction, and stylization">
+  <meta property="og:title" content="OmniLV: A Unified Multimodal Framework for General Low-Level Vision"/>
+  <meta property="og:description" content="OmniLV is a unified multimodal low-level vision framework based on Diffusion Transformer, supporting arbitrary resolutions and achieving optimal performance at 1K resolution"/>
+  <meta property="og:url" content="https://andrew0613.github.io/OmniLV/"/>
   <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X630-->
-  <meta property="og:image" content="static/image/your_banner_image.png" />
+  <meta property="og:image" content="static/images/teaser.png" />
   <meta property="og:image:width" content="1200"/>
   <meta property="og:image:height" content="630"/>
 
 
-  <meta name="twitter:title" content="TWITTER BANNER TITLE META TAG">
-  <meta name="twitter:description" content="TWITTER BANNER DESCRIPTION META TAG">
+  <meta name="twitter:title" content="OmniLV: Unified Multimodal Framework for Low-Level Vision">
+  <meta name="twitter:description" content="OmniLV is a unified low-level vision framework supporting 100+ sub-tasks including image restoration, enhancement, dense prediction, and stylization">
   <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X600-->
-  <meta name="twitter:image" content="static/images/your_twitter_banner_image.png">
+  <meta name="twitter:image" content="static/images/teaser.png">
   <meta name="twitter:card" content="summary_large_image">
   <!-- Keywords for your paper to be indexed by-->
-  <meta name="keywords" content="KEYWORDS SHOULD BE PLACED HERE">
+  <meta name="keywords" content="OmniLV, Low-Level Vision, Image Restoration, Image Enhancement, Dense Prediction, Stylization, Diffusion Transformer, Multimodal Framework">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-  <title>Academic Project Page</title>
+  <title>OmniLV Project Page</title>
   <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
   rel="stylesheet">
@@ -33,9 +33,10 @@
   <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
   <link rel="stylesheet" href="static/css/bulma-slider.min.css">
   <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
-  <link rel="stylesheet"
-  href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="static/css/index.css">
+  <link rel="stylesheet" href="static/css/twentytwenty.css">
+  <link rel="stylesheet" href="static/css/style.css">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
@@ -43,6 +44,8 @@
   <script src="static/js/bulma-carousel.min.js"></script>
   <script src="static/js/bulma-slider.min.js"></script>
   <script src="static/js/index.js"></script>
+  <script src="static/js/jquery.event.move.js"></script>
+  <script src="static/js/jquery.twentytwenty.js"></script>
 </head>
 <body>
 
@@ -52,93 +55,116 @@
       <div class="container is-max-desktop">
         <div class="columns is-centered">
           <div class="column has-text-centered">
-            <h1 class="title is-1 publication-title">Academic Project Page</h1>
+            <h1 class="title is-1 publication-title">OmniLV: A Unified Multimodal Framework for General Low-Level Vision</h1>
             <div class="is-size-5 publication-authors">
               <!-- Paper authors -->
               <span class="author-block">
-                <a href="FIRST AUTHOR PERSONAL LINK" target="_blank">First Author</a><sup>*</sup>,</span>
-                <span class="author-block">
-                  <a href="SECOND AUTHOR PERSONAL LINK" target="_blank">Second Author</a><sup>*</sup>,</span>
-                  <span class="author-block">
-                    <a href="THIRD AUTHOR PERSONAL LINK" target="_blank">Third Author</a>
-                  </span>
-                  </div>
+                <a href="https://andrew0613.github.io" target="_blank">Yuandong Pu</a><sup>1,2</sup>,&nbsp;&nbsp;</span>
+              <span class="author-block">
+                <a href="https://le-zhuo.com" target="_blank">Le Zhuo</a><sup>2,3</sup>,&nbsp;&nbsp;</span>
+              <span class="author-block">
+                <a href="https://scholar.google.com/citations?user=O8lP5XMAAAAJ&hl=zh-CN&oi=ao" target="_blank">Kaiwen Zhu</a><sup>1,2</sup>,&nbsp;&nbsp;</span>
+              <span class="author-block">
+                <a href="https://liangbinxie.github.io" target="_blank">Liangbin Xie</a><sup>4,5</sup>,&nbsp;&nbsp;</span>
+              <span class="author-block">
+                <a href="https://wenlongzhang0517.github.io" target="_blank">Wenlong Zhang</a><sup>2</sup>,&nbsp;&nbsp;</span>
+              <span class="author-block">
+                <a href="https://chxy95.github.io" target="_blank">Xiangyu Chen</a><sup>2</sup>,&nbsp;&nbsp;</span>
+              <span class="author-block">
+                <a href="https://scholar.google.com/citations?hl=zh-CN&user=_go6DPsAAAAJ" target="_blank">Peng Gao</a><sup>2</sup>,&nbsp;&nbsp;</span>
+              <span class="author-block">
+                <a href="https://mmlab.siat.ac.cn/yuqiao" target="_blank">Yu Qiao</a><sup>2</sup>,&nbsp;&nbsp;</span>
+              <span class="author-block">
+                <a href="http://xpixel.group" target="_blank">Chao Dong</a><sup>6,7</sup>,&nbsp;&nbsp;</span>
+              <span class="author-block">
+                <a href="https://lyh-18.github.io" target="_blank">Yihao Liu</a><sup>2,†</sup></span>
+            </div>
 
-                  <div class="is-size-5 publication-authors">
-                    <span class="author-block">Institution Name<br>Conferance name and year</span>
-                    <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution</small></span>
-                  </div>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><sup>1</sup>Shanghai Jiao Tong University,&nbsp;&nbsp;</span>
+              <span class="author-block"><sup>2</sup>Shanghai AI Laboratory,&nbsp;&nbsp;</span>
+              <span class="author-block"><sup>3</sup>The Chinese University of Hong Kong</span>
+            </div>
 
-                  <div class="column has-text-centered">
-                    <div class="publication-links">
-                         <!-- Arxiv PDF link -->
-                      <span class="link-block">
-                        <a href="https://arxiv.org/pdf/<ARXIV PAPER ID>.pdf" target="_blank"
-                        class="external-link button is-normal is-rounded is-dark">
-                        <span class="icon">
-                          <i class="fas fa-file-pdf"></i>
-                        </span>
-                        <span>Paper</span>
-                      </a>
-                    </span>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><sup>4</sup>University of Macau,&nbsp;&nbsp;</span>
+              <span class="author-block"><sup>5</sup>Kuaishou Technology,&nbsp;&nbsp;</span>
+              <span class="author-block"><sup>6</sup>Shenzhen Institutes of Advanced Technology, Chinese Academy of Sciences</span>
+            </div>
 
-                    <!-- Supplementary PDF link -->
-                    <span class="link-block">
-                      <a href="static/pdfs/supplementary_material.pdf" target="_blank"
-                      class="external-link button is-normal is-rounded is-dark">
-                      <span class="icon">
-                        <i class="fas fa-file-pdf"></i>
-                      </span>
-                      <span>Supplementary</span>
-                    </a>
-                  </span>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><sup>7</sup>Shenzhen University of Advanced Technology</span>
+            </div>
 
-                  <!-- Github link -->
-                  <span class="link-block">
-                    <a href="https://github.com/YOUR REPO HERE" target="_blank"
-                    class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon">
-                      <i class="fab fa-github"></i>
-                    </span>
-                    <span>Code</span>
-                  </a>
-                </span>
+            <div class="is-size-6 publication-authors">
+              <span class="author-block"><sup>†</sup>Corresponding author</span>
+            </div>
 
-                <!-- ArXiv abstract Link -->
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                   <!-- Arxiv PDF link -->
                 <span class="link-block">
-                  <a href="https://arxiv.org/abs/<ARXIV PAPER ID>" target="_blank"
+                  <a href="https://arxiv.org/pdf/<ARXIV PAPER ID>.pdf" target="_blank"
                   class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
-                    <i class="ai ai-arxiv"></i>
+                    <i class="fas fa-file-pdf"></i>
                   </span>
-                  <span>arXiv</span>
+                  <span>Paper</span>
                 </a>
               </span>
-            </div>
-          </div>
-        </div>
+
+              <!-- Supplementary PDF link -->
+              <span class="link-block">
+                <a href="static/pdfs/supplementary_material.pdf" target="_blank"
+                class="external-link button is-normal is-rounded is-dark">
+                <span class="icon">
+                  <i class="fas fa-file-pdf"></i>
+                </span>
+                <span>Supplementary</span>
+              </a>
+            </span>
+
+            <!-- Github link -->
+            <span class="link-block">
+              <a href="https://github.com/YOUR REPO HERE" target="_blank"
+              class="external-link button is-normal is-rounded is-dark">
+              <span class="icon">
+                <i class="fab fa-github"></i>
+              </span>
+              <span>Code(Coming Soon...)</span>
+            </a>
+          </span>
+
+          <!-- ArXiv abstract Link -->
+          <span class="link-block">
+            <a href="https://arxiv.org/abs/<ARXIV PAPER ID>" target="_blank"
+            class="external-link button is-normal is-rounded is-dark">
+            <span class="icon">
+              <i class="ai ai-arxiv"></i>
+            </span>
+            <span>arXiv</span>
+          </a>
+        </span>
       </div>
     </div>
   </div>
+</div>
+</div>
 </section>
 
 
-<!-- Teaser video-->
+<!-- Teaser image-->
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
-      <video poster="" id="tree" autoplay controls muted loop height="100%">
-        <!-- Your video here -->
-        <source src="static/videos/banner_video.mp4"
-        type="video/mp4">
-      </video>
+      <img src="static/images/teaser.png" alt="OmniLV Teaser" height="100%">
       <h2 class="subtitle has-text-centered">
-        Aliquam vitae elit ullamcorper tellus egestas pellentesque. Ut lacus tellus, maximus vel lectus at, placerat pretium mi. Maecenas dignissim tincidunt vestibulum. Sed consequat hendrerit nisl ut maximus. 
+        A Illustration of OmniLV's versatile capabilities. As a universal framework, OmniLV is capable of handling a wide variety of low-level vision tasks within a single model, which adapts to diverse input-output domains and generates high-fidelity results.
       </h2>
     </div>
   </div>
 </section>
-<!-- End teaser video -->
+<!-- End teaser image -->
 
 <!-- Paper abstract -->
 <section class="section hero is-light">
@@ -148,7 +174,7 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ullamcorper tellus sed ante aliquam tempus. Etiam porttitor urna feugiat nibh elementum, et tempor dolor mattis. Donec accumsan enim augue, a vulputate nisi sodales sit amet. Proin bibendum ex eget mauris cursus euismod nec et nibh. Maecenas ac gravida ante, nec cursus dui. Vivamus purus nibh, placerat ac purus eget, sagittis vestibulum metus. Sed vestibulum bibendum lectus gravida commodo. Pellentesque auctor leo vitae sagittis suscipit.
+            We present OmniLV, a universal multimodal multi-task framework for low-level vision that addresses over 100 sub-tasks across four major categories, including image restoration, image enhancement, weak-semantic dense prediction, and stylization. OmniLV leverages both textual and visual prompts to offer flexible, user-friendly interactions. Built on Diffusion Transformer (DiT)-based generative priors, our framework supports arbitrary resolutions—achieving optimal performance at 1K resolution—while preserving fine-grained details and high fidelity. Through extensive experiments, we demonstrate that separately encoding text and visual instructions, combined with co-training using shallow feature control, is essential to mitigate task ambiguity and enhance multi-task generalization. Our findings also reveal that integrating high-level generative tasks into low-level vision models can compromise detail-sensitive restoration. These insights pave the way for more robust and generalizable low-level vision systems.
           </p>
         </div>
       </div>
@@ -157,130 +183,245 @@
 </section>
 <!-- End paper abstract -->
 
-
-<!-- Image carousel -->
 <section class="hero is-small">
   <div class="hero-body">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Method</h2>
+        <div class="container">
+          <img src="static/paper_images/framework.png" alt="Method" width="100%">
+        </div>
+
+        <div class="content has-text-justified">
+          <p>
+            Overall framework of OmniLV. First, input images are encoded into latent space by VAE encoder. Then, we patchify the image latent and noise latent into visual tokens. Optionally, in-context pairs can be added to visual tokens to handle complex scenarios. At the same time, the instruction prompt and description prompt are processed by Gemma2B. Finally, we decode the denoised results to get the desired output images.
+          </p>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</section>
+
+<section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="columns is-centered has-text-centered">
+      <h2 class="title is-3">Image Restoration</h2>
+    </div>
+
     <div class="container">
       <div id="results-carousel" class="carousel results-carousel">
-       <div class="item">
-        <!-- Your image here -->
-        <img src="static/images/carousel1.jpg" alt="MY ALT TEXT"/>
-        <h2 class="subtitle has-text-centered">
-          First image description.
-        </h2>
-      </div>
-      <div class="item">
-        <!-- Your image here -->
-        <img src="static/images/carousel2.jpg" alt="MY ALT TEXT"/>
-        <h2 class="subtitle has-text-centered">
-          Second image description.
-        </h2>
-      </div>
-      <div class="item">
-        <!-- Your image here -->
-        <img src="static/images/carousel3.jpg" alt="MY ALT TEXT"/>
-        <h2 class="subtitle has-text-centered">
-         Third image description.
-       </h2>
-     </div>
-     <div class="item">
-      <!-- Your image here -->
-      <img src="static/images/carousel4.jpg" alt="MY ALT TEXT"/>
-      <h2 class="subtitle has-text-centered">
-        Fourth image description.
-      </h2>
-    </div>
-  </div>
-</div>
-</div>
-</section>
-<!-- End image carousel -->
 
-
-
-
-<!-- Youtube video -->
-<section class="hero is-small is-light">
-  <div class="hero-body">
-    <div class="container">
-      <!-- Paper video. -->
-      <h2 class="title is-3">Video Presentation</h2>
-      <div class="columns is-centered has-text-centered">
-        <div class="column is-four-fifths">
-          
-          <div class="publication-video">
-            <!-- Youtube embed code here -->
-            <iframe src="https://www.youtube.com/embed/JkaxUblCGz0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        <div class="item">
+          <div class="twentytwenty-container" data-orientation="horizontal" ratio="0.5556">
+            <div class="desc">from internet</div>
+            <div class="image">
+              <img src="static/images/blur_gaussian_090_input.png" alt="Input Image" width="100%">
+            </div>
+            <div class="image">
+              <img src="static/images/blur_gaussian_090_omnilv.png" alt="Output Image" width="100%">
+            </div>
           </div>
         </div>
+
+        <div class="item">
+          <div class="twentytwenty-container" data-orientation="horizontal" ratio="0.5556">
+            <div class="desc">from internet</div>
+            <div class="image">
+              <img src="static/images/compression_022_input.png" alt="Input Image" width="100%">
+            </div>
+            <div class="image">
+              <img src="static/images/compression_022_omnilv.png" alt="Output Image" width="100%">
+            </div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="twentytwenty-container" data-orientation="horizontal" ratio="0.5556">
+            <div class="desc">from internet</div>
+            <div class="image">
+              <img src="static/images/face_055_input.png" alt="Input Image" width="100%">
+            </div>
+            <div class="image">
+              <img src="static/images/face_055_omnilv.png" alt="Output Image" width="100%">
+            </div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="twentytwenty-container" data-orientation="horizontal" ratio="0.5556">
+            <div class="desc">from internet</div>
+            <div class="image">
+              <img src="static/images/quantization_025_input.png" alt="Input Image" width="100%">
+            </div>
+            <div class="image">
+              <img src="static/images/quantization_025_omnilv.png" alt="Output Image" width="100%">
+            </div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="twentytwenty-container" data-orientation="horizontal" ratio="0.5556">
+            <div class="desc">from internet</div>
+            <div class="image">
+              <img src="static/images/snow100k_city_read_07427_input.png" alt="Input Image" width="100%">
+            </div>
+            <div class="image">
+              <img src="static/images/snow100K-L_07427_omnilv.png" alt="Output Image" width="100%">
+            </div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="twentytwenty-container" data-orientation="horizontal" ratio="0.5556">
+            <div class="desc">from internet</div>
+            <div class="image">
+              <img src="static/images/blur_glass_027_input.png" alt="Input Image" width="100%">
+            </div>
+            <div class="image">
+              <img src="static/images/blur_glass_027_omnilv.png" alt="Output Image" width="100%">
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
 </section>
-<!-- End youtube video -->
 
-
-<!-- Video carousel -->
 <section class="hero is-small">
   <div class="hero-body">
+    <div class="columns is-centered has-text-centered">
+      <h2 class="title is-3">Image Enhancement</h2>
+    </div>
+
     <div class="container">
-      <h2 class="title is-3">Another Carousel</h2>
       <div id="results-carousel" class="carousel results-carousel">
-        <div class="item item-video1">
-          <video poster="" id="video1" autoplay controls muted loop height="100%">
-            <!-- Your video file here -->
-            <source src="static/videos/carousel1.mp4"
-            type="video/mp4">
-          </video>
+
+        <div class="item">
+          <div class="twentytwenty-container" data-orientation="horizontal" ratio="0.5556">
+            <div class="desc">from internet</div>
+            <div class="image">
+              <img src="static/images/enhancement1_input.jpg" alt="Input Image" width="100%">
+            </div>
+            <div class="image">
+              <img src="static/images/enhancement1_output.png" alt="Output Image" width="100%">
+            </div>
+          </div>
         </div>
-        <div class="item item-video2">
-          <video poster="" id="video2" autoplay controls muted loop height="100%">
-            <!-- Your video file here -->
-            <source src="static/videos/carousel2.mp4"
-            type="video/mp4">
-          </video>
+
+        <div class="item">
+          <div class="twentytwenty-container" data-orientation="horizontal" ratio="0.5556">
+            <div class="desc">from internet</div>
+            <div class="image">
+              <img src="static/images/saturate_strengthen_098_input.png" alt="Input Image" width="100%">
+            </div>
+            <div class="image">
+              <img src="static/images/saturate_strengthen_098_omnilv.png" alt="Output Image" width="100%">
+            </div>
+          </div>
         </div>
-        <div class="item item-video3">
-          <video poster="" id="video3" autoplay controls muted loop height="100%">\
-            <!-- Your video file here -->
-            <source src="static/videos/carousel3.mp4"
-            type="video/mp4">
-          </video>
+
+        <div class="item">
+          <div class="twentytwenty-container" data-orientation="horizontal" ratio="0.5556">
+            <div class="desc">from internet</div>
+            <div class="image">
+              <img src="static/images/colorization_02_input.png" alt="Input Image" width="100%">
+            </div>
+            <div class="image">
+              <img src="static/images/colorization_02_omnilv.png" alt="Output Image" width="100%">
+            </div>
+          </div>
         </div>
+      
+        <div class="item">
+          <div class="twentytwenty-container" data-orientation="horizontal" ratio="0.5556">
+            <div class="desc">from internet</div>
+            <div class="image">
+              <img src="static/images/contrast_026_input.png" alt="Input Image" width="100%">
+            </div>
+            <div class="image">
+              <img src="static/images/contrast_026_omnilv.png" alt="Output Image" width="100%">
+            </div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="twentytwenty-container" data-orientation="horizontal" ratio="0.5556">
+            <div class="desc">from internet</div>
+            <div class="image">
+              <img src="static/images/saturate_080_input.png" alt="Input Image" width="100%">
+            </div>
+            <div class="image">
+              <img src="static/images/saturate_080_omnilv.png" alt="Output Image" width="100%">
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
 </section>
-<!-- End video carousel -->
 
-
-
-
-
-
-<!-- Paper poster -->
-<section class="hero is-small is-light">
+<section class="hero is-light is-small">
   <div class="hero-body">
-    <div class="container">
-      <h2 class="title">Poster</h2>
+    <div class="columns is-centered has-text-centered">
+      <h2 class="title is-3">Dense Prediction</h2>
+    </div>
 
-      <iframe  src="static/pdfs/sample.pdf" width="100%" height="550">
-          </iframe>
-        
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel">
+
+        <div class="item">
+          <div class="twentytwenty-container" data-orientation="horizontal" ratio="0.5556">
+            <div class="desc">from internet</div>
+            <div class="image">
+              <img src="static/images/normal_001_input.png" alt="Input Image" width="100%">
+            </div>
+            <div class="image">
+              <img src="static/images/normal_001_omnilv.png" alt="Output Image" width="100%">
+            </div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="twentytwenty-container" data-orientation="horizontal" ratio="0.5556">
+            <div class="desc">from internet</div>
+            <div class="image">
+              <img src="static/images/hed_019_input.png" alt="Input Image" width="100%">
+            </div>
+            <div class="image">
+              <img src="static/images/hed_019_omnilv.png" alt="Output Image" width="100%">
+            </div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="twentytwenty-container" data-orientation="horizontal" ratio="0.5556">
+            <div class="desc">from internet</div>
+            <div class="image">
+              <img src="static/images/depth_009_input.png" alt="Input Image" width="100%">
+            </div>
+            <div class="image">
+              <img src="static/images/depth_009_omnilv.png" alt="Output Image" width="100%">
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
-  </section>
-<!--End paper poster -->
+  </div>
+</section>
 
 
-<!--BibTex citation -->
-  <section class="section" id="BibTeX">
+
+<!-- BibTex citation -->
+  <!-- <section class="section" id="BibTeX">
     <div class="container is-max-desktop content">
       <h2 class="title">BibTeX</h2>
       <pre><code>BibTex Code Here</code></pre>
     </div>
-</section>
+</section> -->
 <!--End BibTex citation -->
 
 
@@ -291,7 +432,7 @@
         <div class="content">
 
           <p>
-            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
+            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
             You are free to borrow the source code of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
             Commons Attribution-ShareAlike 4.0 International License</a>.
           </p>
@@ -307,6 +448,114 @@
 <!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
 
     <!-- End of Statcounter Code -->
+
+<script>
+  // 初始化twentytwenty比较功能
+  function initTwentyTwenty() {
+    $(".twentytwenty-container").twentytwenty({
+      default_offset_pct: 0.5,
+      before_label: "Before",
+      after_label: "After"
+    });
+  }
+
+  // 初始化所有轮播
+  bulmaCarousel.attach('#image-carousel', {
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    infinite: true,
+    autoplay: true,
+    navigation: true
+  });
+
+  bulmaCarousel.attach('#video-carousel', {
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    infinite: true,
+    autoplay: true,
+    navigation: true
+  });
+
+  bulmaCarousel.attach('#real-world-carousel', {
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    infinite: true,
+    autoplay: true,
+    navigation: true
+  });
+
+  bulmaCarousel.attach('#image-comparison-carousel', {
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    infinite: true,
+    autoplay: true,
+    navigation: true,
+    onSlide: function() {
+      // 在轮播切换后重新初始化滑块
+      setTimeout(initTwentyTwenty, 100);
+    }
+  });
+
+  // 页面加载完成后初始化
+  $(document).ready(function() {
+    initTwentyTwenty();
+  });
+</script>
+
+<style>
+  .twentytwenty-container {
+    max-width: 1200px;  /* 限制容器最大宽度 */
+    margin: 0 auto;    /* 水平居中 */
+  }
+
+  .twentytwenty-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background-color: #000;
+  }
+
+  .container {
+    max-width: 1200px;  /* 限制整体容器宽度 */
+  }
+
+  .image-container {
+    display: grid;
+    grid-template-areas: 
+      "left-image top-right-image"
+      "left-image bottom-right-image";
+    grid-template-columns: 2fr 1fr;
+    gap: 1rem;
+  }
+
+  .left-image {
+    grid-area: left-image;
+    width: 100%;
+    height: auto;
+  }
+
+  .top-right-image {
+    grid-area: top-right-image;
+    width: 100%;
+    height: auto;
+  }
+
+  .bottom-right-image {
+    grid-area: bottom-right-image;
+    width: 100%;
+    height: auto;
+  }
+
+  .image-with-caption {
+    text-align: center;
+  }
+
+  .caption {
+    margin-top: 0.5rem;
+    font-style: italic;
+    color: #555;
+  }
+</style>
 
   </body>
   </html>
