@@ -237,8 +237,8 @@ d-article > hr {
 }
 
 .method-figure {
-  width: min(74vw, 900px) !important;
-  max-width: 900px !important;
+  width: min(82vw, 1120px) !important;
+  max-width: 1120px !important;
   margin: 0 auto !important;
   display: block !important;
 }
@@ -246,7 +246,13 @@ d-article > hr {
 .method-figure img {
   width: 100% !important;
   max-width: 100% !important;
+  height: auto !important;
+  object-fit: contain !important;
   display: block !important;
+}
+
+#method {
+  grid-column: page !important;
 }
 
 #abstract {
