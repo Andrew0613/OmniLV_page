@@ -237,15 +237,16 @@ d-article > hr {
 }
 
 .method-figure {
-  width: min(80vw, 980px);
-  max-width: 980px;
-  margin: 0 auto;
+  width: min(74vw, 900px) !important;
+  max-width: 900px !important;
+  margin: 0 auto !important;
+  display: block !important;
 }
 
 .method-figure img {
-  width: 100%;
-  max-width: 100%;
-  display: block;
+  width: 100% !important;
+  max-width: 100% !important;
+  display: block !important;
 }
 
 #abstract {
