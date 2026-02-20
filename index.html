@@ -1,990 +1,221 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <!-- Meta tags for social media banners, these should be filled in appropriatly as they are your "business card" -->
-  <!-- Replace the content tag with appropriate information -->
-  <meta name="description" content="OmniLV: A unified multimodal framework for low-level vision that handles over 100 sub-tasks including image restoration, enhancement, weak-semantic dense prediction, and stylization">
-  <meta property="og:title" content="OmniLV: A Unified Multimodal Framework for General Low-Level Vision"/>
-  <meta property="og:description" content="OmniLV is a unified multimodal low-level vision framework based on Diffusion Transformer, supporting arbitrary resolutions and achieving optimal performance at 1K resolution"/>
-  <meta property="og:url" content="https://Andrew0613.github.io/OmniLV_page/"/>
-  <!-- 注释掉 Open Graph 图片相关标签
-  <meta property="og:image" content="static/images/teaser.png" />
-  <meta property="og:image:width" content="1200"/>
-  <meta property="og:image:height" content="630"/>
-  -->
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Lumina-OmniLV</title>
+    <link rel="icon" type="image/png" href="./static/img/omnilv_teaser.png">
 
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Lumina-OmniLV is a unified multimodal framework for general low-level vision, covering 100+ sub-tasks including restoration, enhancement, dense prediction, and stylization.">
 
-  <meta name="twitter:title" content="OmniLV: Unified Multimodal Framework for Low-Level Vision">
-  <meta name="twitter:description" content="OmniLV is a unified low-level vision framework supporting 100+ sub-tasks including image restoration, enhancement, dense prediction, and stylization">
-  <!-- 注释掉 Twitter 图片相关标签
-  <meta name="twitter:image" content="static/images/teaser.png">
-  <meta name="twitter:card" content="summary_large_image">
-  -->
-  <!-- Keywords for your paper to be indexed by-->
-  <meta name="keywords" content="OmniLV, Low-Level Vision, Image Restoration, Image Enhancement, Dense Prediction, Stylization, Diffusion Transformer, Multimodal Framework">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:url" content="https://Andrew0613.github.io/OmniLV_page/">
+    <meta property="og:image" content="https://Andrew0613.github.io/OmniLV_page/static/img/omnilv_teaser.png">
+    <meta property="og:title" content="Lumina-OmniLV: A Unified Multimodal Framework for General Low-Level Vision">
+    <meta property="og:description" content="A unified multimodal low-level vision framework with text and visual prompts.">
 
+    <meta name="twitter:url" content="https://Andrew0613.github.io/OmniLV_page/">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://Andrew0613.github.io/OmniLV_page/static/img/omnilv_teaser.png">
+    <meta name="twitter:title" content="Lumina-OmniLV: A Unified Multimodal Framework for General Low-Level Vision">
+    <meta name="twitter:description" content="Unified multimodal framework for low-level vision with 100+ tasks.">
 
-  <title>OmniLV Project Page</title>
-  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+    <script src="./static/js/distill_template.v2.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
-  <link rel="stylesheet" href="static/css/bulma.min.css">
-  <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
-  <link rel="stylesheet" href="static/css/bulma-slider.min.css">
-  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-  <link rel="stylesheet" href="static/css/index.css">
-  <link rel="stylesheet" href="static/css/twentytwenty.css">
-  <link rel="stylesheet" href="static/css/style.css">
+    <script defer src="./static/js/hider.js"></script>
+    <script src="./static/js/image_interact.js"></script>
+    <script src="./static/js/switch_videos.js"></script>
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
-  <script defer src="static/js/fontawesome.all.min.js"></script>
-  <script src="static/js/bulma-carousel.min.js"></script>
-  <script src="static/js/bulma-slider.min.js"></script>
-  <script src="static/js/index.js"></script>
-  <script src="static/js/jquery.event.move.js"></script>
-  <script src="static/js/jquery.twentytwenty.js"></script>
-</head>
-<body>
+    <script defer src="./static/js/omnilv-results.js"></script>
 
+    <link rel="stylesheet" href="./static/css/style.css">
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
 
-  <section class="hero">
-    <div class="hero-body">
-      <div class="container is-max-desktop">
-        <div class="columns is-centered">
-          <div class="column has-text-centered">
-            <h1 class="title is-1 publication-title">Lumina-OmniLV: A Unified Multimodal Framework for General Low-Level Vision</h1>
-            <div class="is-size-5 publication-authors">
-              <!-- Paper authors -->
-              <span class="author-block">
-                <a href="https://andrew0613.github.io" target="_blank">Yuandong Pu</a><sup>1,2</sup>,&nbsp;&nbsp;</span>
-              <span class="author-block">
-                <a href="https://le-zhuo.com" target="_blank">Le Zhuo</a><sup>2</sup>,&nbsp;&nbsp;</span>
-              <span class="author-block">
-                <a href="https://scholar.google.com/citations?user=O8lP5XMAAAAJ&hl=zh-CN&oi=ao" target="_blank">Kaiwen Zhu</a><sup>1,2</sup>,&nbsp;&nbsp;</span>
-              <span class="author-block">
-                <a href="https://liangbinxie.github.io" target="_blank">Liangbin Xie</a><sup>3,4</sup>,&nbsp;&nbsp;</span>
-              <span class="author-block">
-                <a href="https://wenlongzhang0517.github.io" target="_blank">Wenlong Zhang</a><sup>2</sup>,&nbsp;&nbsp;</span>
-              <span class="author-block">
-                <a href="https://chxy95.github.io" target="_blank">Xiangyu Chen</a><sup>2,6</sup>,&nbsp;&nbsp;</span>
-              <span class="author-block">
-                <a href="https://scholar.google.com/citations?hl=zh-CN&user=_go6DPsAAAAJ" target="_blank">Peng Gao</a><sup>2</sup>,&nbsp;&nbsp;</span>
-              <span class="author-block">
-                <a href="https://mmlab.siat.ac.cn/yuqiao" target="_blank">Yu Qiao</a><sup>2</sup>,&nbsp;&nbsp;</span>
-              <span class="author-block">
-                <a href="http://xpixel.group" target="_blank">Chao Dong</a><sup>4,5,2</sup>,&nbsp;&nbsp;</span>
-              <span class="author-block">
-                <a href="https://lyh-18.github.io" target="_blank">Yihao Liu</a><sup>2,†</sup></span>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+    <script defer src="./static/js/medium-zoom.min.js"></script>
+    <script defer src="./static/js/zoom.js"></script>
+  </head>
+  <body>
+    <div class="header-wrapper">
+      <div class="header-container" id="header-container">
+        <div class="header-content">
+          <h1 style="margin-top: 0;"><i>Lumina-OmniLV</i></h1>
+          <h2>A Unified Multimodal Framework for General Low-Level Vision</h2>
+
+          <p>
+            Lumina-OmniLV is a universal low-level vision model that supports
+            <strong>100+ sub-tasks</strong> with both textual and visual prompts,
+            spanning restoration, enhancement, weak-semantic dense prediction, and stylization.
+          </p>
+
+          <div class="icon-container">
+            <div class="icon-item">
+              <img src="./static/img/icons/visual.svg" alt="Restoration icon">
+              <div><strong>Image Restoration</strong>: Unified handling of denoising, deblurring, dehazing, deraining, and artifact removal.</div>
             </div>
-
-            <div class="is-size-5 publication-authors">
-              <span class="author-block"><sup>1</sup>Shanghai Jiao Tong University,&nbsp;&nbsp;</span>
-              <span class="author-block"><sup>2</sup>Shanghai AI Laboratory,&nbsp;&nbsp;</span>
-              <span class="author-block"><sup>3</sup>University of Macau</span>
+            <div class="icon-item">
+              <img src="./static/img/icons/recipe.svg" alt="Enhancement icon">
+              <div><strong>Image Enhancement</strong>: Prompt-guided brightness, color, contrast, and perceptual quality improvements.</div>
             </div>
-
-            <div class="is-size-5 publication-authors">
-              <span class="author-block"><sup>4</sup>Shenzhen Institutes of Advanced Technology, Chinese Academy of Sciences,&nbsp;&nbsp;</span>
-              <span class="author-block"><sup>5</sup>Shenzhen University of Advanced Technology,&nbsp;&nbsp;</span>
-              <span class="author-block"><sup>6</sup>Institute of Artificial Intelligence (TeleAI), China Telecom</span>
+            <div class="icon-item">
+              <img src="./static/img/icons/eval.svg" alt="Dense prediction icon">
+              <div><strong>Dense Prediction</strong>: A single framework for edge, depth, and normal map estimation tasks.</div>
             </div>
-
-            <div class="is-size-6 publication-authors">
-              <span class="author-block"><sup>†</sup>Corresponding author</span>
+            <div class="icon-item">
+              <img src="./static/img/icons/connector.svg" alt="Prompt interaction icon">
+              <div><strong>Multimodal Prompting</strong>: Flexible interaction via text instructions and visual in-context exemplars.</div>
             </div>
+          </div>
 
-            <div class="column has-text-centered">
-              <div class="publication-links">
-                   <!-- Arxiv PDF link -->
-                <span class="link-block">
-                  <a href="https://arxiv.org/pdf/2504.04903" target="_blank"
-                  class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                    <i class="fas fa-file-pdf"></i>
-                  </span>
-                  <span>Paper</span>
-                </a>
-              </span>
-
-            <!-- Github link -->
-            <span class="link-block">
-              <a href="https://github.com/YOUR REPO HERE" target="_blank"
-              class="external-link button is-normal is-rounded is-dark">
-              <span class="icon">
-                <i class="fab fa-github"></i>
-              </span>
-              <span>Code(Coming Soon...)</span>
+          <div class="button-container">
+            <a href="https://arxiv.org/abs/2504.04903" class="button paper-link" target="_blank" rel="noopener noreferrer">
+              <span class="icon is-small"><i class="ai ai-arxiv"></i></span>
+              arXiv
             </a>
-          </span>
+            <a href="https://arxiv.org/pdf/2504.04903" class="button paper-link" target="_blank" rel="noopener noreferrer">
+              <span class="icon is-small"><i class="fas fa-file-pdf"></i></span>
+              <span>pdf</span>
+            </a>
+            <a href="https://github.com/Andrew0613/Lumina-Omnilv" class="button" target="_blank" rel="noopener noreferrer">
+              <span class="icon is-small"><i class="fab fa-github"></i></span>
+              <span>Code</span>
+            </a>
+          </div>
+        </div>
 
-          <!-- ArXiv abstract Link -->
-          <span class="link-block">
-            <a href="https://arxiv.org/abs/2504.04903" target="_blank"
-            class="external-link button is-normal is-rounded is-dark">
-            <span class="icon">
-              <i class="ai ai-arxiv"></i>
-            </span>
-            <span>arXiv</span>
-          </a>
-        </span>
+        <div class="header-image">
+          <img draggable="false" src="./static/img/omnilv_teaser.png" alt="OmniLV teaser" class="teaser-image" data-zoomable>
+        </div>
       </div>
     </div>
-  </div>
-</div>
-</div>
-</section>
 
-
-<!-- 注释掉 Teaser 图片部分
-<section class="hero teaser">
-  <div class="container is-max-desktop">
-    <div class="hero-body">
-      <img src="static/images/teaser.png" alt="OmniLV Teaser" height="100%">
-      <h2 class="subtitle has-text-centered">
-        Illustration of OmniLV's versatile capabilities. As a universal framework, OmniLV is capable of handling a wide variety of low-level vision tasks within a single model, which adapts to diverse input-output domains and generates high-fidelity results.
-      </h2>
-    </div>
-  </div>
-</section>
--->
-<!-- End teaser image -->
-
-<!-- Paper abstract -->
-<section class="section hero is-light">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Abstract</h2>
-        <div class="content has-text-justified">
+    <d-article>
+      <div class="byline">
+        <div class="byline-container">
           <p>
-            We present Lunima-OmniLV(abbreviated as OmniLV), a universal multimodal multi-task framework for low-level vision that addresses over 100 sub-tasks across four major categories, including image restoration, image enhancement, weak-semantic dense prediction, and stylization. OmniLV leverages both textual and visual prompts to offer flexible, user-friendly interactions. Built on Diffusion Transformer (DiT)-based generative priors, our framework supports arbitrary resolutions — achieving optimal performance at 1K resolution — while preserving fine-grained details and high fidelity. Through extensive experiments, we demonstrate that separately encoding text and visual instructions, combined with co-training using shallow feature control, is essential to mitigate task ambiguity and enhance multi-task generalization. Our findings also reveal that integrating high-level generative tasks into low-level vision models can compromise detail-sensitive restoration. These insights pave the way for more robust and generalizable low-level vision systems.
+            <a class="author-link" href="https://andrew0613.github.io" target="_blank" rel="noopener noreferrer">Yuandong Pu<sup>1,2</sup></a> &emsp;
+            <a class="author-link" href="https://le-zhuo.com" target="_blank" rel="noopener noreferrer">Le Zhuo<sup>2</sup></a> &emsp;
+            <a class="author-link" href="https://scholar.google.com/citations?user=O8lP5XMAAAAJ&amp;hl=zh-CN&amp;oi=ao" target="_blank" rel="noopener noreferrer">Kaiwen Zhu<sup>1,2</sup></a> &emsp;
+            <a class="author-link" href="https://liangbinxie.github.io" target="_blank" rel="noopener noreferrer">Liangbin Xie<sup>3,4</sup></a> &emsp;
+            <a class="author-link" href="https://wenlongzhang0517.github.io" target="_blank" rel="noopener noreferrer">Wenlong Zhang<sup>2</sup></a> &emsp;
+            <a class="author-link" href="https://chxy95.github.io" target="_blank" rel="noopener noreferrer">Xiangyu Chen<sup>2,6</sup></a> &emsp;
+            <a class="author-link" href="https://scholar.google.com/citations?hl=zh-CN&amp;user=_go6DPsAAAAJ" target="_blank" rel="noopener noreferrer">Peng Gao<sup>2</sup></a> &emsp;
+            <a class="author-link" href="https://mmlab.siat.ac.cn/yuqiao" target="_blank" rel="noopener noreferrer">Yu Qiao<sup>2</sup></a> &emsp;
+            <a class="author-link" href="http://xpixel.group" target="_blank" rel="noopener noreferrer">Chao Dong<sup>4,5,2</sup></a> &emsp;
+            <a class="author-link" href="https://lyh-18.github.io" target="_blank" rel="noopener noreferrer">Yihao Liu<sup>2,*</sup></a>
           </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- End paper abstract -->
-
-<section class="hero is-small">
-  <div class="hero-body">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Method</h2>
-        <div class="container">
-          <img src="static/paper_images/framework.png" alt="Method" width="100%">
-        </div>
-
-        <div class="content has-text-justified">
-          <p>
-            Overall framework of OmniLV. First, input images are encoded into latent space by VAE encoder. Then, we patchify the image latent and noise latent into visual tokens. Optionally, in-context pairs can be added to visual tokens to handle complex scenarios. At the same time, the instruction prompt and description prompt are processed by Gemma2B. Finally, we decode the denoised results to get the desired output images.
+          <p class="text" style="text-align: center; margin-bottom: 0;">
+            <span class="author-note"><sup>1</sup> Shanghai Jiao Tong University &nbsp; <sup>2</sup> Shanghai AI Laboratory &nbsp; <sup>3</sup> University of Macau</span><br>
+            <span class="author-note"><sup>4</sup> Shenzhen Institutes of Advanced Technology, Chinese Academy of Sciences &nbsp; <sup>5</sup> Shenzhen University of Advanced Technology &nbsp; <sup>6</sup> Institute of Artificial Intelligence (TeleAI), China Telecom</span>
           </p>
+          <p style="text-align: center; margin-bottom: 0;"><span class="author-note"><sup>*</sup>Corresponding author</span></p>
         </div>
       </div>
-    </div>
-    
-  </div>
-</section>
 
-<section class="hero is-light is-small">
-  <div class="hero-body">
-    <div class="columns is-centered has-text-centered">
-      <h2 class="title is-3">Synthetic Degradation Image Restoration</h2>
-    </div>
-
-    <div class="container">
-      <div id="results-carousel" class="carousel results-carousel">
-
-        <div class="item">
-          <div class="twentytwenty-container" data-orientation="horizontal" ratio="0.5556">
-            <div class="desc">from internet</div>
-            <div class="image">
-              <img src="static/images/synthetic/7_noise.jpg" alt="Input Image" width="100%">
-            </div>
-            <div class="image">
-              <img src="static/images/synthetic/7_hq.png" alt="Output Image" width="100%">
-            </div>
-          </div>
-        </div>
-
-        <div class="item">
-          <div class="twentytwenty-container" data-orientation="horizontal" ratio="0.5556">
-            <div class="desc">from internet</div>
-            <div class="image">
-              <img src="static/images/synthetic/16_noise.jpg" alt="Input Image" width="100%">
-            </div>
-            <div class="image">
-              <img src="static/images/synthetic/16_hq.png" alt="Output Image" width="100%">
-            </div>
-          </div>
-        </div>
-        
-        <div class="item">
-          <div class="twentytwenty-container" data-orientation="horizontal" ratio="0.5556">
-            <div class="desc">from internet</div>
-            <div class="image">
-              <img src="static/images/blur_gaussian_090_input.png" alt="Input Image" width="100%">
-            </div>
-            <div class="image">
-              <img src="static/images/blur_gaussian_090_omnilv.png" alt="Output Image" width="100%">
-            </div>
-          </div>
-        </div>
-
-        <div class="item">
-          <div class="twentytwenty-container" data-orientation="horizontal" ratio="0.5556">
-            <div class="desc">from internet</div>
-            <div class="image">
-              <img src="static/images/blur_glass_027_input.png" alt="Input Image" width="100%">
-            </div>
-            <div class="image">
-              <img src="static/images/blur_glass_027_omnilv.png" alt="Output Image" width="100%">
-            </div>
-          </div>
-        </div>
-
-
-        <div class="item">
-          <div class="twentytwenty-container" data-orientation="horizontal" ratio="0.5556">
-            <div class="desc">from internet</div>
-            <div class="image">
-              <img src="static/images/compression_022_input.png" alt="Input Image" width="100%">
-            </div>
-            <div class="image">
-              <img src="static/images/compression_022_omnilv.png" alt="Output Image" width="100%">
-            </div>
-          </div>
-        </div>
-
-        <div class="item">
-          <div class="twentytwenty-container" data-orientation="horizontal" ratio="0.5556">
-            <div class="desc">from internet</div>
-            <div class="image">
-              <img src="static/images/synthetic/007_compression.png" alt="Input Image" width="100%">
-            </div>
-            <div class="image">
-              <img src="static/images/synthetic/007_omnilv.png" alt="Output Image" width="100%">
-            </div>
-          </div>
-        </div>
-
-        <div class="item">
-          <div class="twentytwenty-container" data-orientation="horizontal" ratio="0.5556">
-            <div class="desc">from internet</div>
-            <div class="image">
-              <img src="static/images/synthetic/008_compression.png" alt="Input Image" width="100%">
-            </div>
-            <div class="image">
-              <img src="static/images/synthetic/008_omnilv.png" alt="Output Image" width="100%">
-            </div>
-          </div>
-        </div>
-
-        <div class="item">
-          <div class="twentytwenty-container" data-orientation="horizontal" ratio="0.5556">
-            <div class="desc">from internet</div>
-            <div class="image">
-              <img src="static/images/synthetic/23.jpg" alt="Input Image" width="100%">
-            </div>
-            <div class="image">
-              <img src="static/images/synthetic/23_hq.png" alt="Output Image" width="100%">
-            </div>
-          </div>
-        </div>
-
-        <div class="item">
-          <div class="twentytwenty-container" data-orientation="horizontal" ratio="0.5556">
-            <div class="desc">from internet</div>
-            <div class="image">
-              <img src="static/images/quantization_025_input.png" alt="Input Image" width="100%">
-            </div>
-            <div class="image">
-              <img src="static/images/quantization_025_omnilv.png" alt="Output Image" width="100%">
-            </div>
-          </div>
-        </div>
-
-        
-
-        <div class="item">
-          <div class="twentytwenty-container" data-orientation="horizontal" ratio="0.5556">
-            <div class="desc">from internet</div>
-            <div class="image">
-              <img src="static/images/synthetic/55_rain.jpg" alt="Input Image" width="100%">
-            </div>
-            <div class="image">
-              <img src="static/images/synthetic/55_hq.png" alt="Output Image" width="100%">
-            </div>
-          </div>
-        </div>
-
-        <div class="item">
-          <div class="twentytwenty-container" data-orientation="horizontal" ratio="0.5556">
-            <div class="desc">from internet</div>
-            <div class="image">
-              <img src="static/images/synthetic/raindrop_input.png" alt="Input Image" width="100%">
-            </div>
-            <div class="image">
-              <img src="static/images/synthetic/raindrop_omnilv.png" alt="Output Image" width="100%">
-            </div>
-          </div>
-        </div>
-        
-        <div class="item">
-          <div class="twentytwenty-container" data-orientation="horizontal" ratio="0.5556">
-            <div class="desc">from internet</div>
-            <div class="image">
-              <img src="static/images/snow100k_city_read_07427_input.png" alt="Input Image" width="100%">
-            </div>
-            <div class="image">
-              <img src="static/images/snow100K-L_07427_omnilv.png" alt="Output Image" width="100%">
-            </div>
-          </div>
-        </div>
-
-        <div class="item">
-          <div class="twentytwenty-container" data-orientation="horizontal" ratio="0.5556">
-            <div class="desc">from internet</div>
-            <div class="image">
-              <img src="static/images/synthetic/sots_1400_input.png" alt="Input Image" width="100%">
-            </div>
-            <div class="image">
-              <img src="static/images/synthetic/sots_1400_omnilv.png" alt="Output Image" width="100%">
-            </div>
-          </div>
-        </div>
-
-
-
+      <div class="icon-row">
+        <a href="#abstract" class="icon-link">
+          <img src="./static/img/icons/visual.svg" alt="Abstract icon" class="icon">Abstract
+        </a>
+        <a href="#method" class="icon-link">
+          <img src="./static/img/icons/connector.svg" alt="Method icon" class="icon">Method
+        </a>
+        <a href="#results" class="icon-link">
+          <img src="./static/img/icons/data.svg" alt="Results icon" class="icon">Results
+        </a>
+        <a href="#insights" class="icon-link">
+          <img src="./static/img/icons/eval.svg" alt="Insights icon" class="icon">Insights
+        </a>
+        <a href="#citation" class="icon-link">
+          <img src="./static/img/icons/recipe.svg" alt="Citation icon" class="icon">Citation
+        </a>
       </div>
-    </div>
-  </div>
-</section>
 
-<section class="hero is-light is-small">
-  <div class="hero-body">
-    <div class="columns is-centered has-text-centered">
-      <h2 class="title is-3">Real-World Degradation Image Restoration</h2>
-    </div>
+      <p class="click-hint" style="width: 85%;">
+        <img src="./static/img/icons/click.gif" style="width: 1.5rem" alt="click icon">
+        <strong>Click to jump to each section.</strong>
+      </p>
 
-    <div class="container">
-      <div id="results-carousel" class="carousel results-carousel">
-        
-        <div class="item">
-          <div class="twentytwenty-container" data-orientation="horizontal" ratio="0.5556">
-            <div class="desc">from internet</div>
-            <div class="image">
-              <img src="static/images/241.png" alt="Input Image" width="100%">
-            </div>
-            <div class="image">
-              <img src="static/images/241_hq.png" alt="Output Image" width="100%">
-            </div>
-          </div>
-        </div>
+      <hr>
 
-        <div class="item">
-          <div class="twentytwenty-container" data-orientation="horizontal" ratio="0.5556">
-            <div class="desc">from internet</div>
-            <div class="image">
-              <img src="static/images/004.png" alt="Input Image" width="100%">
-            </div>
-            <div class="image">
-              <img src="static/images/004_hq.png" alt="Output Image" width="100%">
-            </div>
-          </div>
-        </div>
-
-        <div class="item">
-          <div class="twentytwenty-container" data-orientation="horizontal" ratio="0.5556">
-            <div class="desc">from internet</div>
-            <div class="image">
-              <img src="static/images/011.png" alt="Input Image" width="100%">
-            </div>
-            <div class="image">
-              <img src="static/images/011_hq.png" alt="Output Image" width="100%">
-            </div>
-          </div>
-        </div>
-        
-        <div class="item">
-          <div class="twentytwenty-container" data-orientation="horizontal" ratio="0.5556">
-            <div class="desc">from internet</div>
-            <div class="image">
-              <img src="static/images/081.png" alt="Input Image" width="100%">
-            </div>
-            <div class="image">
-              <img src="static/images/081_hq.png" alt="Output Image" width="100%">
-            </div>
-          </div>
-        </div>
-
-        <div class="item">
-          <div class="twentytwenty-container" data-orientation="horizontal" ratio="0.5556">
-            <div class="desc">from internet</div>
-            <div class="image">
-              <img src="static/images/094.png" alt="Input Image" width="100%">
-            </div>
-            <div class="image">
-              <img src="static/images/094_hq.png" alt="Output Image" width="100%">
-            </div>
-          </div>
-        </div>
-
-        <div class="item">
-          <div class="twentytwenty-container" data-orientation="horizontal" ratio="0.5556">
-            <div class="desc">from internet</div>
-            <div class="image">
-              <img src="static/images/119.png" alt="Input Image" width="100%">
-            </div>
-            <div class="image">
-              <img src="static/images/119_hq.png" alt="Output Image" width="100%">
-            </div>
-          </div>
-        </div>
-
-        <div class="item">
-          <div class="twentytwenty-container" data-orientation="horizontal" ratio="0.5556">
-            <div class="desc">from internet</div>
-            <div class="image">
-              <img src="static/images/125.png" alt="Input Image" width="100%">
-            </div>
-            <div class="image">
-              <img src="static/images/125_hq.png" alt="Output Image" width="100%">
-            </div>
-          </div>
-        </div>
-
-        <div class="item">
-          <div class="twentytwenty-container" data-orientation="horizontal" ratio="0.5556">
-            <div class="desc">from internet</div>
-            <div class="image">
-              <img src="static/images/166.png" alt="Input Image" width="100%">
-            </div>
-            <div class="image">
-              <img src="static/images/166_hq.png" alt="Output Image" width="100%">
-            </div>
-          </div>
-        </div>
-
-        <div class="item">
-          <div class="twentytwenty-container" data-orientation="horizontal" ratio="0.5556">
-            <div class="desc">from internet</div>
-            <div class="image">
-              <img src="static/images/204.png" alt="Input Image" width="100%">
-            </div>
-            <div class="image">
-              <img src="static/images/204_hq.png" alt="Output Image" width="100%">
-            </div>
-          </div>
-        </div>
-
-        <div class="item">
-          <div class="twentytwenty-container" data-orientation="horizontal" ratio="0.5556">
-            <div class="desc">from internet</div>
-            <div class="image">
-              <img src="static/images/230.png" alt="Input Image" width="100%">
-            </div>
-            <div class="image">
-              <img src="static/images/230_hq.png" alt="Output Image" width="100%">
-            </div>
-          </div>
-        </div>
-
-
-       
+      <div id="abstract" class="sub-section">
+        <h1 class="text">Abstract</h1>
+        <p class="text">
+          We present Lumina-OmniLV (abbreviated as OmniLV), a universal multimodal multi-task framework for low-level vision that addresses over 100 sub-tasks across four major categories, including image restoration, image enhancement, weak-semantic dense prediction, and stylization. OmniLV leverages both textual and visual prompts to offer flexible, user-friendly interactions.
+        </p>
+        <p class="text">
+          Built on Diffusion Transformer (DiT)-based generative priors, our framework supports arbitrary resolutions and achieves optimal performance at 1K resolution while preserving fine-grained details and high fidelity. Through extensive experiments, we demonstrate that separately encoding text and visual instructions, combined with co-training using shallow feature control, is essential to mitigate task ambiguity and improve multi-task generalization.
+        </p>
       </div>
-    </div>
-  </div>
-</section>
 
-<section class="hero is-light is-small">
-  <div class="hero-body">
-    <div class="columns is-centered has-text-centered">
-      <h2 class="title is-3">Face Restoration</h2>
-    </div>
-
-    <div class="container">
-      <div id="results-carousel" class="carousel results-carousel">
-
-        <div class="item">
-          <div class="twentytwenty-container" data-orientation="horizontal" ratio="0.5556">
-            <div class="desc">from internet</div>
-            <div class="image">
-              <img src="static/images/face_055_input.png" alt="Input Image" width="100%">
-            </div>
-            <div class="image">
-              <img src="static/images/face_055_omnilv.png" alt="Output Image" width="100%">
-            </div>
-          </div>
-        </div>
-
-        <div class="item">
-          <div class="twentytwenty-container" data-orientation="horizontal" ratio="0.5556">
-            <div class="desc">from internet</div>
-            <div class="image">
-              <img src="static/images/012.png" alt="Input Image" width="100%">
-            </div>
-            <div class="image">
-              <img src="static/images/012_hq.png" alt="Output Image" width="100%">
-            </div>
-          </div>
-        </div>
-
-        <div class="item">
-          <div class="twentytwenty-container" data-orientation="horizontal" ratio="0.5556">
-            <div class="desc">from internet</div>
-            <div class="image">
-              <img src="static/images/130.png" alt="Input Image" width="100%">
-            </div>
-            <div class="image">
-              <img src="static/images/130_hq.png" alt="Output Image" width="100%">
-            </div>
-          </div>
-        </div>
-        
-        <div class="item">
-          <div class="twentytwenty-container" data-orientation="horizontal" ratio="0.5556">
-            <div class="desc">from internet</div>
-            <div class="image">
-              <img src="static/images/141.png" alt="Input Image" width="100%">
-            </div>
-            <div class="image">
-              <img src="static/images/141_hq.png" alt="Output Image" width="100%">
-            </div>
-          </div>
-        </div>
-
-        <div class="item">
-          <div class="twentytwenty-container" data-orientation="horizontal" ratio="0.5556">
-            <div class="desc">from internet</div>
-            <div class="image">
-              <img src="static/images/179.png" alt="Input Image" width="100%">
-            </div>
-            <div class="image">
-              <img src="static/images/179_hq.png" alt="Output Image" width="100%">
-            </div>
-          </div>
-        </div>
-
-        <div class="item">
-          <div class="twentytwenty-container" data-orientation="horizontal" ratio="0.5556">
-            <div class="desc">from internet</div>
-            <div class="image">
-              <img src="static/images/225.png" alt="Input Image" width="100%">
-            </div>
-            <div class="image">
-              <img src="static/images/225_hq.png" alt="Output Image" width="100%">
-            </div>
-          </div>
-        </div>
-       
+      <div id="method" class="sub-section">
+        <h1 class="text">Method</h1>
+        <figure class="method-figure">
+          <img data-zoomable draggable="false" src="./static/paper_images/framework.png" alt="OmniLV framework">
+          <figcaption>
+            <strong>Figure 1:</strong> Overall framework of OmniLV. Input and noise latents are patchified into visual tokens, text prompts are processed by Gemma2B, and denoised latents are decoded into high-fidelity outputs.
+          </figcaption>
+        </figure>
       </div>
-    </div>
-  </div>
-</section>
 
-<section class="hero is-small">
-  <div class="hero-body">
-    <div class="columns is-centered has-text-centered">
-      <h2 class="title is-3">Image Enhancement</h2>
-    </div>
-
-    <div class="container">
-      <div id="results-carousel" class="carousel results-carousel">
-        
-        <div class="item">
-          <div class="twentytwenty-container" data-orientation="horizontal" ratio="0.5556">
-            <div class="desc">from internet</div>
-            <div class="image">
-              <img src="static/images/enhancement1_input.jpg" alt="Input Image" width="100%">
-            </div>
-            <div class="image">
-              <img src="static/images/enhancement1_output.png" alt="Output Image" width="100%">
-            </div>
-          </div>
-        </div>
-
-        <div class="item">
-          <div class="twentytwenty-container" data-orientation="horizontal" ratio="0.5556">
-            <div class="desc">from internet</div>
-            <div class="image">
-              <img src="static/images/saturate_strengthen_098_input.png" alt="Input Image" width="100%">
-            </div>
-            <div class="image">
-              <img src="static/images/saturate_strengthen_098_omnilv.png" alt="Output Image" width="100%">
-            </div>
-          </div>
-        </div>
-
-        <div class="item">
-          <div class="twentytwenty-container" data-orientation="horizontal" ratio="0.5556">
-            <div class="desc">from internet</div>
-            <div class="image">
-              <img src="static/images/colorization_02_input.png" alt="Input Image" width="100%">
-            </div>
-            <div class="image">
-              <img src="static/images/colorization_02_omnilv.png" alt="Output Image" width="100%">
-            </div>
-          </div>
-        </div>
-      
-        <div class="item">
-          <div class="twentytwenty-container" data-orientation="horizontal" ratio="0.5556">
-            <div class="desc">from internet</div>
-            <div class="image">
-              <img src="static/images/contrast_026_input.png" alt="Input Image" width="100%">
-            </div>
-            <div class="image">
-              <img src="static/images/contrast_026_omnilv.png" alt="Output Image" width="100%">
-            </div>
-          </div>
-        </div>
-
-        <div class="item">
-          <div class="twentytwenty-container" data-orientation="horizontal" ratio="0.5556">
-            <div class="desc">from internet</div>
-            <div class="image">
-              <img src="static/images/saturate_080_input.png" alt="Input Image" width="100%">
-            </div>
-            <div class="image">
-              <img src="static/images/saturate_080_omnilv.png" alt="Output Image" width="100%">
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="hero is-light is-small">
-  <div class="hero-body">
-    <div class="columns is-centered has-text-centered">
-      <h2 class="title is-3">Dense Prediction</h2>
-    </div>
-
-    <div class="container">
-      <div id="results-carousel" class="carousel results-carousel">
-        
-        <div class="item">
-          <div class="twentytwenty-container" data-orientation="horizontal" ratio="0.5556">
-            <div class="desc">from internet</div>
-            <div class="image">
-              <img src="static/images/denseprediction/depth_input2.png" alt="Input Image" width="100%">
-            </div>
-            <div class="image">
-              <img src="static/images/denseprediction/depth_omnilv2.png" alt="Output Image" width="100%">
-            </div>
-          </div>
-        </div>
-
-        <div class="item">
-          <div class="twentytwenty-container" data-orientation="horizontal" ratio="0.5556">
-            <div class="desc">from internet</div>
-            <div class="image">
-              <img src="static/images/denseprediction/depth_input03.png" alt="Input Image" width="100%">
-            </div>
-            <div class="image">
-              <img src="static/images/denseprediction/depth_omnilv03.png" alt="Output Image" width="100%">
-            </div>
-          </div>
-        </div>
-
-        <div class="item">
-          <div class="twentytwenty-container" data-orientation="horizontal" ratio="0.5556">
-            <div class="desc">from internet</div>
-            <div class="image">
-              <img src="static/images/denseprediction/depth_000_input.png" alt="Input Image" width="100%">
-            </div>
-            <div class="image">
-              <img src="static/images/denseprediction/depth_000_omnilv.png" alt="Output Image" width="100%">
-            </div>
-          </div>
-        </div>
-
-        <div class="item">
-          <div class="twentytwenty-container" data-orientation="horizontal" ratio="0.5556">
-            <div class="desc">from internet</div>
-            <div class="image">
-              <img src="static/images/denseprediction/depth_input_1.png" alt="Input Image" width="100%">
-            </div>
-            <div class="image">
-              <img src="static/images/denseprediction/depth_1_omnilv.png" alt="Output Image" width="100%">
-            </div>
-          </div>
-        </div>
-
-        <div class="item">
-          <div class="twentytwenty-container" data-orientation="horizontal" ratio="0.5556">
-            <div class="desc">from internet</div>
-            <div class="image">
-              <img src="static/images/denseprediction/edge_input01.png" alt="Input Image" width="100%">
-            </div>
-            <div class="image">
-              <img src="static/images/denseprediction/edge_01_omnilv.png" alt="Output Image" width="100%">
-            </div>
-          </div>
-        </div>
-
-        <div class="item">
-          <div class="twentytwenty-container" data-orientation="horizontal" ratio="0.5556">
-            <div class="desc">from internet</div>
-            <div class="image">
-              <img src="static/images/denseprediction/edge_input02.png" alt="Input Image" width="100%">
-            </div>
-            <div class="image">
-              <img src="static/images/denseprediction/edge_omnilv02.png" alt="Output Image" width="100%">
-            </div>
-          </div>
-        </div>
-        
-        <div class="item">
-          <div class="twentytwenty-container" data-orientation="horizontal" ratio="0.5556">
-            <div class="desc">from internet</div>
-            <div class="image">
-              <img src="static/images/hed_019_input.png" alt="Input Image" width="100%">
-            </div>
-            <div class="image">
-              <img src="static/images/hed_019_omnilv.png" alt="Output Image" width="100%">
-            </div>
-          </div>
-        </div>
-        
-        <div class="item">
-          <div class="twentytwenty-container" data-orientation="horizontal" ratio="0.5556">
-            <div class="desc">from internet</div>
-            <div class="image">
-              <img src="static/images/denseprediction/hed_input1.png" alt="Input Image" width="100%">
-            </div>
-            <div class="image">
-              <img src="static/images/denseprediction/hed_omnilv1.png" alt="Output Image" width="100%">
-            </div>
-          </div>
-        </div>
-
-        <div class="item">
-          <div class="twentytwenty-container" data-orientation="horizontal" ratio="0.5556">
-            <div class="desc">from internet</div>
-            <div class="image">
-              <img src="static/images/denseprediction/hed_input02.png" alt="Input Image" width="100%">
-            </div>
-            <div class="image">
-              <img src="static/images/denseprediction/hed_omnilv02.png" alt="Output Image" width="100%">
-            </div>
-          </div>
-        </div>
-
-        <div class="item">
-          <div class="twentytwenty-container" data-orientation="horizontal" ratio="0.5556">
-            <div class="desc">from internet</div>
-            <div class="image">
-              <img src="static/images/denseprediction/hed_input03.png" alt="Input Image" width="100%">
-            </div>
-            <div class="image">
-              <img src="static/images/denseprediction/hed_omnilv03.png" alt="Output Image" width="100%">
-            </div>
-          </div>
-        </div>
-
-        <div class="item">
-          <div class="twentytwenty-container" data-orientation="horizontal" ratio="0.5556">
-            <div class="desc">from internet</div>
-            <div class="image">
-              <img src="static/images/denseprediction/normal1input.png" alt="Input Image" width="100%">
-            </div>
-            <div class="image">
-              <img src="static/images/denseprediction/normal1omnilv.png" alt="Output Image" width="100%">
-            </div>
-          </div>
-        </div>
-
-        <div class="item">
-          <div class="twentytwenty-container" data-orientation="horizontal" ratio="0.5556">
-            <div class="desc">from internet</div>
-            <div class="image">
-              <img src="static/images/denseprediction/normal2input.png" alt="Input Image" width="100%">
-            </div>
-            <div class="image">
-              <img src="static/images/denseprediction/normal2omnilv.png" alt="Output Image" width="100%">
-            </div>
-          </div>
-        </div>
-
-        <div class="item">
-          <div class="twentytwenty-container" data-orientation="horizontal" ratio="0.5556">
-            <div class="desc">from internet</div>
-            <div class="image">
-              <img src="static/images/denseprediction/normal3input.png" alt="Input Image" width="100%">
-            </div>
-            <div class="image">
-              <img src="static/images/denseprediction/normal3omnilv.png" alt="Output Image" width="100%">
-            </div>
-          </div>
-        </div>
-
-        <div class="item">
-          <div class="twentytwenty-container" data-orientation="horizontal" ratio="0.5556">
-            <div class="desc">from internet</div>
-            <div class="image">
-              <img src="static/images/denseprediction/normal4input.png" alt="Input Image" width="100%">
-            </div>
-            <div class="image">
-              <img src="static/images/denseprediction/normal4omnilv.png" alt="Output Image" width="100%">
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-</section>
-
-
-
-<!-- BibTex citation -->
-  <!-- <section class="section" id="BibTeX">
-    <div class="container is-max-desktop content">
-      <h2 class="title">BibTeX</h2>
-      <pre><code>BibTex Code Here</code></pre>
-    </div>
-</section> -->
-<!--End BibTex citation -->
-
-
-  <footer class="footer">
-  <div class="container">
-    <div class="columns is-centered">
-      <div class="column is-8">
-        <div class="content">
-
-          <p>
-            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
-            You are free to borrow the source code of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
-            Commons Attribution-ShareAlike 4.0 International License</a>.
-          </p>
-
+      <div id="results" class="sub-section">
+        <h1 class="text">Results</h1>
+        <p class="text">
+          We organize results into five categories. Each category shows featured examples by default and supports one-click expansion to all pairs.
+        </p>
+        <div id="results-root" class="results-root" data-results-src="./static/data/omnilv-results.json">
+          <p class="loading">Loading visual comparisons...</p>
         </div>
       </div>
-    </div>
-  </div>
-</footer>
 
-<!-- Statcounter tracking code -->
-  
-<!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
+      <div id="insights" class="sub-section">
+        <h1 class="text">Insights</h1>
+        <p class="text">Additional analyses from the paper highlighting model behavior and design tradeoffs.</p>
 
-    <!-- End of Statcounter Code -->
+        <d-figure>
+          <figure>
+            <img data-zoomable draggable="false" src="./static/paper_images/mllm.png" alt="OmniLV multimodal analysis">
+            <figcaption><strong>Figure 2:</strong> Multimodal prompting improves adaptability across heterogeneous low-level tasks.</figcaption>
+          </figure>
+        </d-figure>
 
-<script>
-  // 初始化twentytwenty比较功能
-  function initTwentyTwenty() {
-    $(".twentytwenty-container").twentytwenty({
-      default_offset_pct: 0.5,
-      before_label: "Before",
-      after_label: "After"
-    });
-  }
+        <d-figure>
+          <figure>
+            <img data-zoomable draggable="false" src="./static/paper_images/tsne.png" alt="Feature-space analysis">
+            <figcaption><strong>Figure 3:</strong> Feature-space clustering reveals stronger task decoupling with separate text and visual encoding.</figcaption>
+          </figure>
+        </d-figure>
 
-  // 初始化所有轮播
-  bulmaCarousel.attach('#image-carousel', {
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    infinite: true,
-    autoplay: true,
-    navigation: true
-  });
+        <d-figure>
+          <figure>
+            <img data-zoomable draggable="false" src="./static/paper_images/mislead.png" alt="Misleading optimization analysis">
+            <figcaption><strong>Figure 4:</strong> Mixing high-level generative objectives can hurt detail-sensitive restoration quality.</figcaption>
+          </figure>
+        </d-figure>
+      </div>
 
-  bulmaCarousel.attach('#video-carousel', {
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    infinite: true,
-    autoplay: true,
-    navigation: true
-  });
+      <div id="citation" class="sub-section">
+        <h1 class="text">Citation</h1>
+        <div class="citation-toolbar">
+          <button id="copy-bibtex" type="button" class="button-inline">Copy BibTeX</button>
+        </div>
+        <pre><code id="bibtex-code">@article{pu2025luminaomnilv,
+  title   = {Lumina-OmniLV: A Unified Multimodal Framework for General Low-Level Vision},
+  author  = {Pu, Yuandong and Zhuo, Le and Zhu, Kaiwen and Xie, Liangbin and Zhang, Wenlong and Chen, Xiangyu and Gao, Peng and Qiao, Yu and Dong, Chao and Liu, Yihao},
+  journal = {arXiv preprint arXiv:2504.04903},
+  year    = {2025}
+}</code></pre>
+      </div>
+    </d-article>
 
-  bulmaCarousel.attach('#real-world-carousel', {
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    infinite: true,
-    autoplay: true,
-    navigation: true
-  });
-
-  bulmaCarousel.attach('#image-comparison-carousel', {
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    infinite: true,
-    autoplay: true,
-    navigation: true,
-    onSlide: function() {
-      // 在轮播切换后重新初始化滑块
-      setTimeout(initTwentyTwenty, 100);
-    }
-  });
-
-  // 页面加载完成后初始化
-  $(document).ready(function() {
-    initTwentyTwenty();
-  });
-</script>
-
-<style>
-  .twentytwenty-container {
-    max-width: 1200px;  /* 限制容器最大宽度 */
-    margin: 0 auto;    /* 水平居中 */
-  }
-
-  .twentytwenty-container img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    background-color: #000;
-  }
-
-  .container {
-    max-width: 1200px;  /* 限制整体容器宽度 */
-  }
-
-  .image-container {
-    display: grid;
-    grid-template-areas: 
-      "left-image top-right-image"
-      "left-image bottom-right-image";
-    grid-template-columns: 2fr 1fr;
-    gap: 1rem;
-  }
-
-  .left-image {
-    grid-area: left-image;
-    width: 100%;
-    height: auto;
-  }
-
-  .top-right-image {
-    grid-area: top-right-image;
-    width: 100%;
-    height: auto;
-  }
-
-  .bottom-right-image {
-    grid-area: bottom-right-image;
-    width: 100%;
-    height: auto;
-  }
-
-  .image-with-caption {
-    text-align: center;
-  }
-
-  .caption {
-    margin-top: 0.5rem;
-    font-style: italic;
-    color: #555;
-  }
-</style>
-
+    <footer class="footer-note">
+      <p>
+        This webpage is built on the template style of Cambrian/PICABench pages and adapted for Lumina-OmniLV.
+      </p>
+    </footer>
   </body>
-  </html>
+</html>

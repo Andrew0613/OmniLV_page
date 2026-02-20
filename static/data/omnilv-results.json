@@ -1,0 +1,92 @@
+{
+  "categories": [
+    {
+      "id": "synthetic-restoration",
+      "title": "Synthetic Degradation Image Restoration",
+      "description": "Synthetic degradations including denoising, deblurring, deraining, dehazing, compression removal, and quantization artifact correction.",
+      "featuredCount": 4,
+      "samples": [
+        {"id": "syn-01", "inputSrc": "static/images/synthetic/7_noise.jpg", "outputSrc": "static/images/synthetic/7_hq.png", "label": "Synthetic 01", "taskTag": "Denoising"},
+        {"id": "syn-02", "inputSrc": "static/images/synthetic/16_noise.jpg", "outputSrc": "static/images/synthetic/16_hq.png", "label": "Synthetic 02", "taskTag": "Denoising"},
+        {"id": "syn-03", "inputSrc": "static/images/blur_gaussian_090_input.png", "outputSrc": "static/images/blur_gaussian_090_omnilv.png", "label": "Synthetic 03", "taskTag": "Gaussian Deblur"},
+        {"id": "syn-04", "inputSrc": "static/images/blur_glass_027_input.png", "outputSrc": "static/images/blur_glass_027_omnilv.png", "label": "Synthetic 04", "taskTag": "Glass Deblur"},
+        {"id": "syn-05", "inputSrc": "static/images/compression_022_input.png", "outputSrc": "static/images/compression_022_omnilv.png", "label": "Synthetic 05", "taskTag": "Compression Removal"},
+        {"id": "syn-06", "inputSrc": "static/images/synthetic/007_compression.png", "outputSrc": "static/images/synthetic/007_omnilv.png", "label": "Synthetic 06", "taskTag": "Compression Removal"},
+        {"id": "syn-07", "inputSrc": "static/images/synthetic/008_compression.png", "outputSrc": "static/images/synthetic/008_omnilv.png", "label": "Synthetic 07", "taskTag": "Compression Removal"},
+        {"id": "syn-08", "inputSrc": "static/images/synthetic/23.jpg", "outputSrc": "static/images/synthetic/23_hq.png", "label": "Synthetic 08", "taskTag": "General Restoration"},
+        {"id": "syn-09", "inputSrc": "static/images/quantization_025_input.png", "outputSrc": "static/images/quantization_025_omnilv.png", "label": "Synthetic 09", "taskTag": "Dequantization"},
+        {"id": "syn-10", "inputSrc": "static/images/synthetic/55_rain.jpg", "outputSrc": "static/images/synthetic/55_hq.png", "label": "Synthetic 10", "taskTag": "Deraining"},
+        {"id": "syn-11", "inputSrc": "static/images/synthetic/raindrop_input.png", "outputSrc": "static/images/synthetic/raindrop_omnilv.png", "label": "Synthetic 11", "taskTag": "Raindrop Removal"},
+        {"id": "syn-12", "inputSrc": "static/images/snow100k_city_read_07427_input.png", "outputSrc": "static/images/snow100K-L_07427_omnilv.png", "label": "Synthetic 12", "taskTag": "Desnowing"},
+        {"id": "syn-13", "inputSrc": "static/images/synthetic/sots_1400_input.png", "outputSrc": "static/images/synthetic/sots_1400_omnilv.png", "label": "Synthetic 13", "taskTag": "Dehazing"}
+      ]
+    },
+    {
+      "id": "real-world-restoration",
+      "title": "Real-World Degradation Image Restoration",
+      "description": "In-the-wild restoration examples with unknown mixed degradations.",
+      "featuredCount": 4,
+      "samples": [
+        {"id": "real-01", "inputSrc": "static/images/241.png", "outputSrc": "static/images/241_hq.png", "label": "Real-World 01", "taskTag": "Mixed Degradation"},
+        {"id": "real-02", "inputSrc": "static/images/004.png", "outputSrc": "static/images/004_hq.png", "label": "Real-World 02", "taskTag": "Mixed Degradation"},
+        {"id": "real-03", "inputSrc": "static/images/011.png", "outputSrc": "static/images/011_hq.png", "label": "Real-World 03", "taskTag": "Mixed Degradation"},
+        {"id": "real-04", "inputSrc": "static/images/081.png", "outputSrc": "static/images/081_hq.png", "label": "Real-World 04", "taskTag": "Mixed Degradation"},
+        {"id": "real-05", "inputSrc": "static/images/094.png", "outputSrc": "static/images/094_hq.png", "label": "Real-World 05", "taskTag": "Mixed Degradation"},
+        {"id": "real-06", "inputSrc": "static/images/119.png", "outputSrc": "static/images/119_hq.png", "label": "Real-World 06", "taskTag": "Mixed Degradation"},
+        {"id": "real-07", "inputSrc": "static/images/125.png", "outputSrc": "static/images/125_hq.png", "label": "Real-World 07", "taskTag": "Mixed Degradation"},
+        {"id": "real-08", "inputSrc": "static/images/166.png", "outputSrc": "static/images/166_hq.png", "label": "Real-World 08", "taskTag": "Mixed Degradation"},
+        {"id": "real-09", "inputSrc": "static/images/204.png", "outputSrc": "static/images/204_hq.png", "label": "Real-World 09", "taskTag": "Mixed Degradation"},
+        {"id": "real-10", "inputSrc": "static/images/230.png", "outputSrc": "static/images/230_hq.png", "label": "Real-World 10", "taskTag": "Mixed Degradation"}
+      ]
+    },
+    {
+      "id": "face-restoration",
+      "title": "Face Restoration",
+      "description": "Identity-preserving facial restoration under severe quality degradation.",
+      "featuredCount": 3,
+      "samples": [
+        {"id": "face-01", "inputSrc": "static/images/face_055_input.png", "outputSrc": "static/images/face_055_omnilv.png", "label": "Face 01", "taskTag": "Face Restoration"},
+        {"id": "face-02", "inputSrc": "static/images/012.png", "outputSrc": "static/images/012_hq.png", "label": "Face 02", "taskTag": "Face Restoration"},
+        {"id": "face-03", "inputSrc": "static/images/130.png", "outputSrc": "static/images/130_hq.png", "label": "Face 03", "taskTag": "Face Restoration"},
+        {"id": "face-04", "inputSrc": "static/images/141.png", "outputSrc": "static/images/141_hq.png", "label": "Face 04", "taskTag": "Face Restoration"},
+        {"id": "face-05", "inputSrc": "static/images/179.png", "outputSrc": "static/images/179_hq.png", "label": "Face 05", "taskTag": "Face Restoration"},
+        {"id": "face-06", "inputSrc": "static/images/225.png", "outputSrc": "static/images/225_hq.png", "label": "Face 06", "taskTag": "Face Restoration"}
+      ]
+    },
+    {
+      "id": "image-enhancement",
+      "title": "Image Enhancement",
+      "description": "Tone, color, and contrast enhancement via prompt-guided low-level transformations.",
+      "featuredCount": 3,
+      "samples": [
+        {"id": "enh-01", "inputSrc": "static/images/enhancement1_input.jpg", "outputSrc": "static/images/enhancement1_output.png", "label": "Enhancement 01", "taskTag": "Brightness"},
+        {"id": "enh-02", "inputSrc": "static/images/saturate_strengthen_098_input.png", "outputSrc": "static/images/saturate_strengthen_098_omnilv.png", "label": "Enhancement 02", "taskTag": "Saturation"},
+        {"id": "enh-03", "inputSrc": "static/images/colorization_02_input.png", "outputSrc": "static/images/colorization_02_omnilv.png", "label": "Enhancement 03", "taskTag": "Colorization"},
+        {"id": "enh-04", "inputSrc": "static/images/contrast_026_input.png", "outputSrc": "static/images/contrast_026_omnilv.png", "label": "Enhancement 04", "taskTag": "Contrast"},
+        {"id": "enh-05", "inputSrc": "static/images/saturate_080_input.png", "outputSrc": "static/images/saturate_080_omnilv.png", "label": "Enhancement 05", "taskTag": "Saturation"}
+      ]
+    },
+    {
+      "id": "dense-prediction",
+      "title": "Dense Prediction",
+      "description": "Weak-semantic dense prediction including depth, edges, and normal map estimation.",
+      "featuredCount": 4,
+      "samples": [
+        {"id": "dense-01", "inputSrc": "static/images/denseprediction/depth_input2.png", "outputSrc": "static/images/denseprediction/depth_omnilv2.png", "label": "Dense 01", "taskTag": "Depth"},
+        {"id": "dense-02", "inputSrc": "static/images/denseprediction/depth_input03.png", "outputSrc": "static/images/denseprediction/depth_omnilv03.png", "label": "Dense 02", "taskTag": "Depth"},
+        {"id": "dense-03", "inputSrc": "static/images/denseprediction/depth_000_input.png", "outputSrc": "static/images/denseprediction/depth_000_omnilv.png", "label": "Dense 03", "taskTag": "Depth"},
+        {"id": "dense-04", "inputSrc": "static/images/denseprediction/depth_input_1.png", "outputSrc": "static/images/denseprediction/depth_1_omnilv.png", "label": "Dense 04", "taskTag": "Depth"},
+        {"id": "dense-05", "inputSrc": "static/images/denseprediction/edge_input01.png", "outputSrc": "static/images/denseprediction/edge_01_omnilv.png", "label": "Dense 05", "taskTag": "Edge"},
+        {"id": "dense-06", "inputSrc": "static/images/denseprediction/edge_input02.png", "outputSrc": "static/images/denseprediction/edge_omnilv02.png", "label": "Dense 06", "taskTag": "Edge"},
+        {"id": "dense-07", "inputSrc": "static/images/hed_019_input.png", "outputSrc": "static/images/hed_019_omnilv.png", "label": "Dense 07", "taskTag": "HED"},
+        {"id": "dense-08", "inputSrc": "static/images/denseprediction/hed_input1.png", "outputSrc": "static/images/denseprediction/hed_omnilv1.png", "label": "Dense 08", "taskTag": "HED"},
+        {"id": "dense-09", "inputSrc": "static/images/denseprediction/hed_input02.png", "outputSrc": "static/images/denseprediction/hed_omnilv02.png", "label": "Dense 09", "taskTag": "HED"},
+        {"id": "dense-10", "inputSrc": "static/images/denseprediction/hed_input03.png", "outputSrc": "static/images/denseprediction/hed_omnilv03.png", "label": "Dense 10", "taskTag": "HED"},
+        {"id": "dense-11", "inputSrc": "static/images/denseprediction/normal1input.png", "outputSrc": "static/images/denseprediction/normal1omnilv.png", "label": "Dense 11", "taskTag": "Normal"},
+        {"id": "dense-12", "inputSrc": "static/images/denseprediction/normal2input.png", "outputSrc": "static/images/denseprediction/normal2omnilv.png", "label": "Dense 12", "taskTag": "Normal"},
+        {"id": "dense-13", "inputSrc": "static/images/denseprediction/normal3input.png", "outputSrc": "static/images/denseprediction/normal3omnilv.png", "label": "Dense 13", "taskTag": "Normal"},
+        {"id": "dense-14", "inputSrc": "static/images/denseprediction/normal4input.png", "outputSrc": "static/images/denseprediction/normal4omnilv.png", "label": "Dense 14", "taskTag": "Normal"}
+      ]
+    }
+  ]
+}
